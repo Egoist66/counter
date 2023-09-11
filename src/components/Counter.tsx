@@ -27,7 +27,7 @@ export const Counter: FC = () => {
     const {exist, get, ls} = LS()
 
     const [state, setState] = useState<CountStateType>({
-        maxValue: 0,
+        maxValue: 5,
         count: 0,
         startValue: 0,
         maxRangeError: false,
@@ -68,7 +68,7 @@ export const Counter: FC = () => {
             maxValueError: false,
             maxRangeError: false,
             startValueError: false,
-            count: get('startValue')
+            count: get('startValue') || state.startValue
         });
     };
 
@@ -76,8 +76,8 @@ export const Counter: FC = () => {
     useEffect(() => {
         setState({
             ...state,
-            maxValue: exist('maxValue') ? get('maxValue') : 0,
-            startValue: exist('startValue') ? get('startValue'): 0,
+            maxValue: exist('maxValue') ? get('maxValue') : state.maxValue,
+            startValue: exist('startValue') ? get('startValue'): state.startValue,
             count: exist('startValue') ? get('startValue'): 0
         })
     }, [])
