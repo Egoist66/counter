@@ -2,13 +2,13 @@ import {FC} from "react";
 import SectionWrapper from "../service-components/Wrapper/SectionWrapper";
 import {Settings} from "./Settings";
 import {useCounterEngine} from "../engine-hooks/useCounterEngine";
-import {OutPutAndControls} from "./OutPutAndControls";
+import {CounterControls} from "./CounterControls";
 import {useView} from "../engine-hooks/useView";
 
 
 export const Counter: FC = () => {
 
-    const {state, setState, changeCount, resetCount} = useCounterEngine()
+    const {state, setState} = useCounterEngine()
     const {setView, isCounterinView} = useView()
 
 
@@ -16,8 +16,9 @@ export const Counter: FC = () => {
 
         <SectionWrapper>
 
-            {isCounterinView ? <OutPutAndControls setView={setView}/> : <Settings
+            {isCounterinView ? <CounterControls setView={setView}/> : <Settings
                 isSettingCounter={state.isSettingCounter}
+                maxRangeError={state.maxRangeError}
                 maxValue={state.maxValue}
                 startValue={state.startValue}
                 setCounterState={setState}

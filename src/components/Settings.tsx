@@ -3,9 +3,9 @@ import styled from "styled-components";
 import Text from "../service-components/Text/Text";
 import SectionWrapper from "../service-components/Wrapper/SectionWrapper";
 import {Button} from "./Button";
-import {LS} from "../utils/utils";
-import {CountStateType} from "../engine-hooks/useCounterEngine";
+import {useCounterEngine} from "../engine-hooks/useCounterEngine";
 import {SettingProps, useSettings} from "../engine-hooks/useSettings";
+import {OutPut} from "./Output";
 
 const StyledSetting = styled.div`
   
@@ -31,17 +31,29 @@ const StyledInput = styled.input`
 
 export const Settings: FC<SettingProps> = (props) => {
 
-    const {handleMaxValue, handleStartValue, saveValues} = useSettings(props)
+    const {
+        handleMaxValue,
+        handleStartValue,
+        saveValues,
+        maxValue,
+        startValue,
+        isDisabledBtn,
+        isSettingCounter,
+        maxRangeError
+    } = useSettings(props)
 
     const {
         setCounterState,
-        isSettingCounter,
-        isDisabledBtn,
-        startValue,
-        maxValue,
         setView,
         countState
     } = props
+
+
+
+    const resultMessageClassName = maxRangeError ? 'limit-count' : ''
+    const resultMessage = <h3 style={{marginBottom: 20}} className={resultMessageClassName}>{
+        maxRangeError ? 'Value is not correct' : 'Enter values and press "set"'
+    }</h3>
 
 
     return (
@@ -78,6 +90,14 @@ export const Settings: FC<SettingProps> = (props) => {
                         name={'start-value'}
                     />
                 </Text>
+
+            </SectionWrapper>
+
+            <SectionWrapper _justify={'center'}>
+                <OutPut
+
+                    render={() => isSettingCounter ? resultMessage: null}
+                />
 
             </SectionWrapper>
 

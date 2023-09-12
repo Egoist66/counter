@@ -5,9 +5,9 @@ import {StyledServiceWrapperType, WrapperChildren} from "../../service-types/typ
 
 const StyledServiceWrapper = styled.div<StyledServiceWrapperType>`
   display: flex;
-  flex-direction: ${props => props.direction || 'row'};
+  flex-direction: ${props => props.direction ?? 'row'};
   gap: ${props => props.gap || '0px'};
-  justify-content: ${props => props._justify || 'flex-start'};
+  justify-content: ${props => props._justify ?? 'flex-start'};
   align-items: ${props => props.align_center};
 
   
@@ -21,7 +21,7 @@ const StyledServiceWrapper = styled.div<StyledServiceWrapperType>`
 
 
 
-function Wrapper({_justify, gap, align_center, children, direction}: WrapperChildren){
+function Wrapper({_justify = 'flex-start', gap, align_center, children, direction = 'row'}: WrapperChildren){
 
     return (
         <StyledServiceWrapper direction={direction} gap={gap} align_center={align_center} _justify={_justify}>

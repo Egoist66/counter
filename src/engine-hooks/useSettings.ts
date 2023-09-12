@@ -7,6 +7,7 @@ import {CountStateType} from "./useCounterEngine";
     setView?: (arg: boolean) => void
     countState: CountStateType
     maxValue: number
+    maxRangeError: boolean
     startValue: number
     isDisabledBtn: boolean
     isSettingCounter: boolean
@@ -22,6 +23,7 @@ export const useSettings = (props: SettingProps) => {
         isSettingCounter,
         setCounterState,
         countState,
+        maxRangeError,
         startValue,
         maxValue,
         isDisabledBtn
@@ -97,6 +99,11 @@ export const useSettings = (props: SettingProps) => {
     return {
         handleMaxValue,
         handleStartValue,
+        isSettingCounter,
+        maxRangeError,
+        isDisabledBtn,
+        maxValue,
+        startValue,
         saveValues
     }
 

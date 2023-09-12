@@ -37,7 +37,7 @@ export const GlobalStyles = createGlobalStyle`
   .error-input {
     animation: shake 0.5s ease-in-out alternate;
     background-color: #f89d9d;
-    border: 2px solid red
+    border: 2px solid red !important;
   }
 
   .limit-count {
@@ -97,7 +97,7 @@ export const GlobalStyles = createGlobalStyle`
     margin-bottom: 30px !important;
   }
   
-  h2, p {
+  h2, h3, p {
     text-align: center;
     margin: 0;
   }
