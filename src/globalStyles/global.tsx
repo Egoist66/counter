@@ -65,7 +65,7 @@ export const GlobalStyles = createGlobalStyle`
     display: inline-block;
     margin: 0 10px;
     font-size: 20px;
-    width: 120px;
+    width: 150px;
     background-color: darkcyan;
     color: white;
     border: none;
